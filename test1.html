@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="jquerymobile/jquery.mobile-1.4.5.css" />
+	<script src="jquerymobile/demos/js/jquery.js"></script>
+	<script src="jquerymobile/jquery.mobile-1.4.5.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="home">
+    <div data-role="content">        
+        <select name="pages" id="selectPages" class="navigateToPage">
+           <option>Select a Page</option>
+           <option value="page2">Color</option>
+           <option value="page3">Rangkuman</option>
+        </select>
+        <br />
+        <form name=first> 
+    Decimal Number: <input name=t1 id="t1" type="text" onkeyup="change(this)" size=20>   
+  Binary Number: <input name=deciBin type="text" size=20 readonly class=resform>
+
+<!-- Error Handling jika decimal yang dimasukkan tidak berupa angka -->
+Validate and Error Handling jika decimal tidak angka maka akan error
+<input  type=button name='SB' value='Change to Hex' onclick="hexa()";> 
+Hexadecimal : <input type="text" id="hexatext" size=20 >
+ </form>    
+    </div>
+</div>
+
+<div data-role="page" id="page2">
+    <div data-role="content">        
+        <select name="pages2" id="selectPages2" class="navigateToPage">
+           <option>Select a Page</option>
+           <option value="home">Calculator</option>
+           <option value="page3">Rangkuman</option>
+        </select>
+        <br />
+
+<table>
+    <tbody>
+        <tr>
+        	Result
+            <td colspan="5">
+                <textarea id="color" cols="50" rows="10"></textarea>
+                <!-- RGB value boxes !-->
+            </td>
+            <td>
+                R
+                <input type=text size=3 maxlength=3 name="r" value="0" onBlur="rgb(this);">
+            </td>
+            <td>
+                G
+                <input type=text size=3 maxlength=3 name="g" value="0" onBlur="rgb(this);">
+            </td>
+            <td>    
+                B
+                <input type=text size=3 maxlength=3 name="b" value="0" onBlur="rgb(this);">
+            </td>
+      </tr>
+  </tbody>
+</table>
+<h1>Responsive Grid</h1>
+<div class="ui-grid-b">
+	<div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height: 80px;">Color 1 :<textarea id="color1" cols="50" rows="10"></textarea></div></div>
+	<div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height: 80px;">Color 2 :<textarea id="color2" cols="50" rows="10"></textarea></div></div>
+	<div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height: 80px;">Color 3 :<textarea id="color3" cols="50" rows="10"></textarea></div></div>
+</div>
+Theme Loader : 
+<button class="show-page-loading-msg" data-theme="a" data-textonly="false" data-textvisible="true" data-msgtext="Loading theme a" data-inline="true">A</button>
+<button class="show-page-loading-msg" data-theme="b" data-textonly="false" data-textvisible="true" data-msgtext="Loading theme b" data-inline="true">B</button>
+<button class="hide-page-loading-msg" data-inline="true" data-icon="delete">Hide</button>
+
+  <div data-role="panel" id="myPanel" data-position="right" data-display="overlay"> 
+    <h2>Panel</h2>
+    <select name="pages" id="selectPages" class="navigateToPage" data-native-menu="false">
+           <option>Select a Page</option>
+           <option value="home">Calculator</option>
+           <option value="page3">Rangkuman</option>
+        </select>
+  </div> 
+
+  <div data-role="header">
+    <h1>Page Header</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Click on the button below to open the Panel.</p>
+    <a href="tryit.asp-filename=tryjqmob_panels_basic.html#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Open Panel</a>
+  </div>
+
+    </div>
+</div>
+
+<div data-role="page" id="page3">
+    <div data-role="content">        
+        <label for="pages3" class="select">Navigate to page:</label>
+        <select name="pages3" id="selectPages3" class="navigateToPage">
+           <option>Select a Page</option>
+           <option value="home">Calculator</option>
+           <option value="page2">Color</option>           
+        </select>
+        <br />
+  <form>
+    <label for="textarea-1">Rangkuman</label>
+    <textarea name="textarea-1" id="textarea-1">
+Hal yang dipelajari selama kelas PPM :
+1. Mengetahui cara menggunakan git melalui interface seperti command line untuk memasukkan file dari repository lokal ke repository server sebagai contohnya adalah repository dari github , cara-carar untuk melakukan push dan pull file dari atau ke server git , melihat status beserta log dari file yang di commit. Selain itu juga mengenal software lain selain git SCM yang memudahkan untuk melakukan hal diatas dengan interface yang terbilang mudah contohnya seperti SourceTree.
+
+2. Melakukan coding dengan menggunakan jquery mobile termasuk dalam pembuatan page-page yang menggunakan macam-macam widget yang dalam demo yang diberikan jquerymobile sendiri dan hal itu sangat memudahkan dalam membuat tampilan mobile.Pr yang diberikan membantu dalam pengenalan jquery mobile akan widget-widget yang telah disediakan oleh jquerymobile itu sendiri.
+
+3.Mempelajari penggunaan angular js sebagai framework.
+
+</textarea>
+List Hal yang dipelajari
+<ul data-role="listview">
+    <li>Git</li>
+    <li>Jquery Mobile</li>
+    <li>Angular Js</li>
+</ul>
+
+</form> 
+<form>
+    <input type="range" name="slider-1" id="slider-1" min="0" max="100" value="50">
+</form> 
+    </div>
+</div>
+
+<script type="text/javascript">
+	$('.navigateToPage').change(function() {
+    var page = $(this).val();
+    $.mobile.changePage( "#"+page, { transition: "slideup"} );
+});
+
+function isNum(args)
+{
+args = args.toString();
+if (args.length == 0)
+return false;for (var i = 0;i<args.length;i++)
+{
+if (args.substring(i,i+1) < "0" || args.substring(i, i+1) > "9")
+{
+return false;
+}
+}return true; } function deciToBin(arg) {
+res1 = 999;
+args = arg;
+while(args>1)
+{
+arg1 = parseInt(args/2);
+arg2 = args%2;
+args = arg1;
+if(res1 == 999)
+{
+res1 = arg2.toString();
+}
+else
+{
+res1 = arg2.toString()+res1.toString();
+}
+}
+if(args == 1 && res1 != 999)
+{
+res1 = args.toString()+res1.toString();
+}
+else if(args == 0 && res1 == 999)
+{
+res1 = 0;
+}
+else if(res1 == 999)
+{
+res1 = 1;
+}
+var ll = res1.length;
+while(ll%4 != 0)
+{
+res1 = "0"+res1;
+ll = res1.length;
+}
+return res1; } function change(name) {
+var sd = name.value;
+if(isNum(sd))
+{
+var result = deciToBin(sd);
+document.first.deciBin.value = result;
+}
+else
+{
+document.first.deci.value = sd.substring(0,sd.length-1) ;
+} } 
+
+
+function hexa(){
+var n1=document.getElementById('t1').value;
+if(isNaN(n1)){
+document.first.hexatext.value=document.getElementById('t1').value + " is not a number ( Validasi and Error Handling) ";
+}else{
+n1=parseInt(n1);
+document.first.hexatext.value=n1.toString(16);
+}
+
+}
+
+var r=0;
+var g=0;
+var b=0;
+function rgb(elem) {
+  var name = elem.name;
+  var val = elem.value;
+  window[name] = val;
+  document.getElementById("color").style.backgroundColor = 'rgb('+r+','+g+','+b+')';
+  document.getElementById("color1").style.backgroundColor = 'rgb('+r+','+0+','+0+')';
+  document.getElementById("color2").style.backgroundColor = 'rgb('+0+','+g+','+0+')';
+  document.getElementById("color3").style.backgroundColor = 'rgb('+0+','+0+','+b+')';
+}
+
+$( document ).on( "click", ".show-page-loading-msg", function() {
+    var $this = $( this ),
+        theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+        msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+        textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+        textonly = !!$this.jqmData( "textonly" );
+        html = $this.jqmData( "html" ) || "";
+    $.mobile.loading( "show", {
+            text: msgText,
+            textVisible: textVisible,
+            theme: theme,
+            textonly: textonly,
+            html: html
+    });
+})
+.on( "click", ".hide-page-loading-msg", function() {
+    $.mobile.loading( "hide" );
+});
+</script>
+</body>
+</html>
